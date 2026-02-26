@@ -1,8 +1,8 @@
 body{
     font-family: 'Franklin Gothic Medium';
     font: larger;
-    background-color: green;
-    color: blueviolet;
+    background-color: white;
+    color: black;
 }
 
 h1{
@@ -13,4 +13,9 @@ h1{
 img{
     width: 500px;
     height: 600px;
+}
+
+div{
+    margin: auto;
+    display: inline-block;
 }
