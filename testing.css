@@ -1,0 +1,16 @@
+body{
+    font-family: 'Franklin Gothic Medium';
+    font: larger;
+    background-color: green;
+    color: blueviolet;
+}
+
+h1{
+    background-color: black;
+    color: azure;
+}
+
+img{
+    width: 500px;
+    height: 600px;
+}
