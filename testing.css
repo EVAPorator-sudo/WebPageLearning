@@ -17,5 +17,14 @@ img{
 
 div{
     margin: auto;
+}
+
+.wrap{
     display: flex;
+}
+
+.inside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
