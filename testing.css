@@ -17,5 +17,5 @@ img{
 
 div{
     margin: auto;
-    display: inline-block;
+    display: flex;
 }
