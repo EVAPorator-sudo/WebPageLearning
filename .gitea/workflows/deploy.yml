@@ -7,16 +7,18 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted     # Run directly inside your gitea-runner container
+    runs-on: self-hosted     # Run inside your gitea-runner container
     steps:
-      - name: Clear directory
-        run: rm -R /tmp/website
+      - name: Clear temporary website directory
+        run: |
+          [ -d "/tmp/website" ] && rm -rf /tmp/website
 
       - name: Checkout repository
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /tmp/website
 
-      - name: Clear directory
-        run: rm -R /usr/share/nginx/html/*
+      - name: Clear webserver content
+        run: |
+          [ -d "/usr/share/nginx/html" ] && rm -rf /usr/share/nginx/html/*
 
       - name: Sync website
         run: cp -r /tmp/website/* /usr/share/nginx/html/
