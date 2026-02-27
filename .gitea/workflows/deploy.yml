@@ -10,13 +10,13 @@ jobs:
     runs-on: self-hosted
     container:
       image: localhost/gitea-runner-node:alpine
-  volumes:
-    - type: bind
-      source: /docker/web-content
-      target: /usr/share/nginx/html
-    - type: bind
-      source: /docker/gitea-runner-data/workdir
-      target: /workdir
+      volumes:
+        - type: bind
+          source: /docker/web-content
+          target: /usr/share/nginx/html
+        - type: bind
+          source: /docker/gitea-runner-data/workdir
+          target: /workdir
 
     steps:
       - name: Clear temporary directory
@@ -31,7 +31,12 @@ jobs:
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /workdir/tmp_website
 
       - name: Clear webserver directory
-        run: rm -rf /usr/share/nginx/html/*
+        run: |
+          if [ -d "/usr/share/nginx/html" ]; then
+            rm -rf /usr/share/nginx/html/*
+          else
+            echo "/usr/share/nginx/html does not exist, skipping cleanup"
+          fi
 
       - name: Deploy website
         run: cp -a /workdir/tmp_website/* /usr/share/nginx/html/
