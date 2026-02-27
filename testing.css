@@ -25,10 +25,11 @@ div{
 }
 
 button{
-    flex-shrink: 0;
-    display: block;
     width: 640px;
     height: 50px;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
 }
 
 .wrap{
