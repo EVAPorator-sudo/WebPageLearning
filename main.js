@@ -8,7 +8,7 @@ var Dog2Name = "Rocket:";
 
 function alertTest(popup) {
     alert(popup);
-}
+};
 
 function dogSwap(dogImage, dogName) {
     const path = dogImage.getAttribute("src");
@@ -19,7 +19,7 @@ function dogSwap(dogImage, dogName) {
         dogImage.setAttribute("src", Dog1Path);
         dogName.textContent = Dog1Name;
     }
-}
+};
 
 dogButton.addEventListener("click", () => {
     const dogImage = document.getElementById("DogImage");
