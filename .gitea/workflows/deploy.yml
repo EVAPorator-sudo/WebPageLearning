@@ -1,19 +1,17 @@
-name: Gitea Actions Demo
-run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
-on: [push]
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  Explore-Gitea-Actions:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: web-runner
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
-      - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - uses: actions/checkout@v3
+
+      - name: Sync website
         run: |
-          ls ${{ gitea.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          rsync -a --delete ./ /usr/share/nginx/html/
+          echo "Website deployed successfully"
