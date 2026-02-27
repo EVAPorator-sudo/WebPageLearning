@@ -13,5 +13,6 @@ jobs:
 
       - name: Sync website
         run: |
+          mkdir -p /usr/share/nginx/html
           cp -r ./* /usr/share/nginx/html/
           echo "Website deployed successfully"
