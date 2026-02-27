@@ -1,8 +1,8 @@
 const testButton = document.querySelector("#testButton");
 const dogButton = document.querySelector("#dogButton");
 
-const Dog1Path = "resources/BigDog.jpg";
-const Dog2Path = "resources/LilGuy.jpg";
+const Dog1Path = "resources/BigDog.png";
+const Dog2Path = "resources/LilGuy.png";
 const Dog1Name = "Loki:";
 const Dog2Name = "Rocket:";
 
