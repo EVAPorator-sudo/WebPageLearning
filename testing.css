@@ -10,9 +10,14 @@ h1{
     color: azure;
 }
 
+h2{
+    color: azure;
+}
+
 img{
-    width: 500px;
-    height: 600px;
+
+    width: 40em;
+    height: 40em;
 }
 
 div{
