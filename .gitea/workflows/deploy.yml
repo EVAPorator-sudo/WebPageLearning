@@ -1,0 +1,17 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: web-runner
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Sync website
+        run: |
+          rsync -a --delete ./ /usr/share/nginx/html/
+          echo "Website deployed successfully"
