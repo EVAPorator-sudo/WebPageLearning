@@ -1,19 +1,15 @@
-name: Deploy Website
-
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   deploy:
     runs-on: self-hosted
     container:
       image: localhost/gitea-runner-node:alpine
       volumes:
-        - /docker/web-content:/usr/share/nginx/html
-        - /docker/gitea-runner-data/workdir:/workdir
-        - /var/run/docker.sock:/var/run/docker.sock
+        - type: bind
+          source: /docker/web-content
+          target: /usr/share/nginx/html
+        - type: bind
+          source: /docker/gitea-runner-data/workdir
+          target: /workdir
 
     steps:
       - name: Clear temporary directory
