@@ -10,6 +10,13 @@ jobs:
     runs-on: self-hosted
     container:
       image: localhost/gitea-runner-node:alpine
+  volumes:
+    - type: bind
+      source: /docker/web-content
+      target: /usr/share/nginx/html
+    - type: bind
+      source: /docker/gitea-runner-data/workdir
+      target: /workdir
 
     steps:
       - name: Clear temporary directory
