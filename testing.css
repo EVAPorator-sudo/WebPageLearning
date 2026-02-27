@@ -15,9 +15,9 @@ h2{
 }
 
 img{
-
-    width: 640px;
+    object-fit: fill;
     height: 640px;
+    width: 640px;
 }
 
 div{
@@ -25,7 +25,8 @@ div{
 }
 
 button{
-    width: 40em;
+    object-fit: fill;
+    width: 640px;
     height: 50px;
 }
 
