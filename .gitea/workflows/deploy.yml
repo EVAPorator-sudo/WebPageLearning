@@ -10,6 +10,7 @@ jobs:
     runs-on: self-hosted
     container:
       image: localhost/gitea-runner-node:alpine
+      network: code-stack_gitea
       volumes:
         - type: bind
           source: /docker/web-content
