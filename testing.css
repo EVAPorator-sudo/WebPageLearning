@@ -25,7 +25,7 @@ div{
 }
 
 button{
-    object-fit: fill;
+    flex-shrink: 0;
     width: 640px;
     height: 50px;
 }
