@@ -12,5 +12,8 @@ jobs:
       - name: Checkout repository
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /tmp/website
 
+      - name: Clear directory
+        run: rm -R /usr/share/nginx/html/*
+
       - name: Sync website
         run: cp -r /tmp/website/* /usr/share/nginx/html/
