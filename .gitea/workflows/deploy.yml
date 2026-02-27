@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     container:
       image: localhost/gitea-runner-node:alpine
-      network: code-stack_gitea
+      # network left empty so it uses the runner container network
       volumes:
         - type: bind
           source: /docker/web-content
@@ -18,26 +18,18 @@ jobs:
         - type: bind
           source: /docker/gitea-runner-data/workdir
           target: /workdir
+      # do NOT mount /var/run/docker.sock here, let runner config handle it
 
     steps:
       - name: Clear temporary directory
         run: |
-          if [ -d "/workdir/tmp_website" ]; then
-            rm -rf /workdir/tmp_website
-          else
-            echo "/workdir/tmp_website does not exist, skipping cleanup"
-          fi
+          rm -rf /workdir/tmp_website || echo "/workdir/tmp_website does not exist, skipping"
 
       - name: Clone repository
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /workdir/tmp_website
 
       - name: Clear webserver directory
-        run: |
-          if [ -d "/usr/share/nginx/html" ]; then
-            rm -rf /usr/share/nginx/html/*
-          else
-            echo "/usr/share/nginx/html does not exist, skipping cleanup"
-          fi
+        run: rm -rf /usr/share/nginx/html/* || echo "/usr/share/nginx/html does not exist, skipping"
 
       - name: Deploy website
         run: cp -a /workdir/tmp_website/* /usr/share/nginx/html/
