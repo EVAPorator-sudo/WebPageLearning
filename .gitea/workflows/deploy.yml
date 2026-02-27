@@ -8,17 +8,24 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    container:
+      image: localhost/gitea-runner-node:alpine
+      volumes:
+        - /docker/web-content:/usr/share/nginx/html
+        - /docker/gitea-runner-data/workdir:/workdir
+        - /var/run/docker.sock:/var/run/docker.sock
+
     steps:
       - name: Clear temporary directory
         run: |
-          if [ -d "/tmp/website" ]; then
-            rm -rf /tmp/website
+          if [ -d "/workdir/tmp_website" ]; then
+            rm -rf /workdir/tmp_website
           else
-            echo "/tmp/website does not exist, skipping cleanup"
+            echo "/workdir/tmp_website does not exist, skipping cleanup"
           fi
 
       - name: Clone repository
-        run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /tmp/website
+        run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /workdir/tmp_website
 
       - name: Clear webserver directory
         run: |
@@ -29,4 +36,4 @@ jobs:
           fi
 
       - name: Deploy website
-        run: cp -a /tmp/website/* /usr/share/nginx/html/
+        run: cp -a /workdir/tmp_website/* /usr/share/nginx/html/
