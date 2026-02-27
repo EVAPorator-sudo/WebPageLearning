@@ -7,18 +7,26 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted     # Your gitea-runner container
+    runs-on: self-hosted
     steps:
       - name: Clear temporary directory
         run: |
-          [ -d "/tmp/website" ] && rm -rf /tmp/website
+          if [ -d "/tmp/website" ]; then
+            rm -rf /tmp/website
+          else
+            echo "/tmp/website does not exist, skipping cleanup"
+          fi
 
       - name: Clone repository
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /tmp/website
 
       - name: Clear webserver directory
         run: |
-          [ -d "/usr/share/nginx/html" ] && rm -rf /usr/share/nginx/html/*
+          if [ -d "/usr/share/nginx/html" ]; then
+            rm -rf /usr/share/nginx/html/*
+          else
+            echo "/usr/share/nginx/html does not exist, skipping cleanup"
+          fi
 
       - name: Deploy website
-        run: cp -r /tmp/website/* /usr/share/nginx/html/
+        run: cp -a /tmp/website/* /usr/share/nginx/html/
