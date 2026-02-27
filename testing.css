@@ -16,12 +16,17 @@ h2{
 
 img{
 
-    width: 40em;
-    height: 40em;
+    width: 640px;
+    height: 640px;
 }
 
 div{
     margin: auto;
+}
+
+button{
+    width: 640px;
+    height: 50px;
 }
 
 .wrap{
@@ -32,8 +37,4 @@ div{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-iframe{
-
 }
