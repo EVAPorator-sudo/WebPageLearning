@@ -1,9 +1,9 @@
 body, html{
-    font-family: 'Franklin Gothic Medium';
-    font: larger;
-    color: black;
     height: 100%;
+    width: 100%;
     margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 h1{
@@ -17,16 +17,12 @@ h2{
 
 img{
     object-fit: fill;
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
 }
 
 div{
     margin: auto;
-}
-
-button{
-
 }
 
 .wrap{
@@ -39,8 +35,8 @@ button{
     align-items: center;
 }
 
-#dogButton{
-    width: 600px;
+#dogSwapButton{
+    width: 500px;
     height: 50px;
     padding: 0;
     border: none;
