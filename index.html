@@ -9,29 +9,31 @@
 </head>
 
 <body>
+    <button class="tabLink" id="dogButton">Dogs</button>
+    <button class="tabLink" id="musicButton">Music</button>
+    <div class="tab" id="dogs">
     <h1>The dogs:</h1>
     <div class="wrap">
         <div class="inside">
             <h2 id="DogName">Loki:</h2>
             <img id="DogImage" src="resources/BigDog.png" alt="BigDog">
-            <button id="dogButton">Dog Swap</button>
+            <button id="dogSwapButton">Dog Swap</button>
         </div>
     </div>
-
+</div>
+<div class="tab" id="music">
     <h1>Music I fw rn:</h1>
     <div class="wrap">
         <iframe data-testid="embed-iframe" style="border-radius:12px"
-            src="https://open.spotify.com/embed/album/21b4cDNse2AMpj94ykfuON?utm_source=generator" width="50%"
-            height="352" frameborder="0" allowfullscreen=""
+            src="https://open.spotify.com/embed/album/21b4cDNse2AMpj94ykfuON?utm_source=generator" width="50%" height="600"
+            frameborder="0" allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe data-testid="embed-iframe" style="border-radius:12px"
-            src="https://open.spotify.com/embed/album/3o81FH5FTYVtoBQOZr3T7y?utm_source=generator" width="50%"
-            height="352" frameborder="0" allowfullscreen=""
+            src="https://open.spotify.com/embed/album/3o81FH5FTYVtoBQOZr3T7y?utm_source=generator" width="50%" height="600"
+            frameborder="0" allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
-
-    <button id="testButton">Test Alert</button>
-
+</div>
     <script src="main.0.1.js" defer></script>
 </body>
 
