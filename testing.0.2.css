@@ -44,6 +44,15 @@ div{
     box-sizing: border-box;
 }
 
+.tab-buttons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 10;
+}
+
 .tabLink{
     background-color: #fff;
     color: black;
