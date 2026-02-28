@@ -48,7 +48,7 @@ musicButton.addEventListener("click", () => {
 function openPage(pageId, buttonId) {
     const content = document.getElementsByClassName("tab");
     for (const element of content) {
-        element.style.display = "none";
+        element.classList.remove("active");
     }
 
     const links = document.getElementsByClassName("tabLink");
@@ -56,6 +56,8 @@ function openPage(pageId, buttonId) {
         element.style.backgroundColor = "";
     }
 
-    document.getElementById(pageId).style.display = "block";
+    const page = document.getElementById(pageId);
+    page.classList.add("active");
+
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
 }

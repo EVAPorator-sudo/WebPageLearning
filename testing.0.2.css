@@ -71,9 +71,20 @@ div{
 
 .tab {
     color: white;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
     padding: 100px 20px;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.tab.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #dogs{
