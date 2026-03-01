@@ -100,18 +100,6 @@ h2{
     align-content: end;
 }
 
-#dogs{
-    background-color: #b23a3a;
-}
-
-#music{
-    background-color: #5fb3a2;
-}
-
-#maze{
-    background-color: #f2d65c;
-}
-
 .mazewrap {
     display: flex;
     height: calc(100% - 60px);

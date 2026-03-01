@@ -65,5 +65,6 @@ function openPage(pageId, buttonId) {
     const page = document.getElementById(pageId);
     page.classList.add("active");
 
+    document.getElementById(pageId).style.backgroundColor = scheme[pageId];
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
 }
