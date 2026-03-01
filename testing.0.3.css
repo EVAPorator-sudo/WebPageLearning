@@ -6,20 +6,8 @@ body, html{
     overflow: hidden;
 }
 
-h1{
-    background-color: black;
-    color: azure;
-}
-
 h2{
     color: azure;
-}
-
-img{
-    object-fit: fill;
-    width: auto;
-    max-height: 60vh;
-    max-width: 90%;
 }
 
 .wrap{
@@ -36,6 +24,13 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.inside img {
+    object-fit: fill;
+    width: auto;
+    max-height: 60vh;
+    max-width: 90%;
 }
 
 #dogSwapButton{
@@ -85,20 +80,129 @@ img{
     pointer-events: none;
 }
 
+.tab h1 {
+    background-color: black;
+    color: azure;
+}
+
 .tab.active {
     opacity: 1;
     pointer-events: auto;
 }
 
+.mazetab {
+    display: flex;
+    flex-direction: row;
+}
+
+.mazeinputs{
+    display: flex;
+    align-content: end;
+}
+
 #dogs{
-    background-color: crimson;
+    background-color: #b23a3a;
 }
 
 #music{
-    background-color: aquamarine;
+    background-color: #5fb3a2;
+}
+
+#maze{
+    background-color: #f2d65c;
 }
 
 @keyframes fadeIn{
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+.mazewrap {
+    display: flex;
+    height: calc(100% - 60px);
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+.mazeimage {
+    flex: 1;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mazeimage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.mazeinputs {
+    width: 320px;
+    background: #f5f5f5;
+    color: #000;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mazeexplanation {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.inputwrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inputwrap label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.inputwrap input,
+.inputwrap select {
+    padding: 6px;
+    font-size: 14px;
+}
+
+.sliderrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sliderrow span {
+    font-size: 12px;
+}
+
+.buttonrow {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.buttonrow button {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.buttonrow .primary {
+    background: #4fa3ff;
+    color: white;
+    border: none;
+}
+
+.buttonrow button:not(.primary) {
+    background: #ddd;
+    border: none;
 }

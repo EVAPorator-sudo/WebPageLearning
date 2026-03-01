@@ -1,10 +1,12 @@
 const dogSwapButton = document.querySelector("#dogSwapButton");
 const dogButton = document.querySelector("#dogButton");
 const musicButton = document.querySelector("#musicButton");
+const mazeButton = document.querySelector("#mazeButton")
 
 let scheme = {
-    dogs : "crimson",
-    music : "aquamarine"
+    dogs: "#b23a3a",
+    music: "#5fb3a2",
+    maze: "#f2d65c"
 }
 
 const Dog1Path = "resources/BigDog.png";
@@ -43,6 +45,10 @@ dogButton.addEventListener("click", () => {
 
 musicButton.addEventListener("click", () => {
     openPage("music", "musicButton");
+});
+
+mazeButton.addEventListener("click", () => {
+    openPage("maze", "mazeButton");
 });
 
 function openPage(pageId, buttonId) {

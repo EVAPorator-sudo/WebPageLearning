@@ -12,6 +12,7 @@
     <div class="tab-buttons">
     <button class="tabLink" id="dogButton">Dogs</button>
     <button class="tabLink" id="musicButton">Music</button>
+    <button class="tabLink" id="mazeButton">Generate</button>
 </div>
     <div class="tab" id="dogs">
     <h1>The dogs:</h1>
@@ -32,6 +33,53 @@
             src="https://open.spotify.com/embed/album/3o81FH5FTYVtoBQOZr3T7y?utm_source=generator" width="50%" height="90%"
             frameborder="0" allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+</div>
+<div class="tab" id="maze">
+    <h1>Maze Generator</h1>
+
+    <div class="mazewrap">
+        <div class="mazeimage">
+            <img class="mazedisplay" src="resources/CurrentMaze.png" alt="Maze Preview">
+        </div>
+        <div class="mazeinputs">
+            <p class="mazeexplanation">
+                Specify your requirements and click <b>Generate</b>.
+                When finished, click <b>Export</b>.
+            </p>
+
+            <div class="inputwrap">
+                <label>Height</label>
+                <input type="number" value="20">
+            </div>
+
+            <div class="inputwrap">
+                <label>Width</label>
+                <input type="number" value="20">
+            </div>
+
+            <div class="inputwrap">
+                <label>Algorithm</label>
+                <select>
+                    <option>Eller's</option>
+                    <option>Growing Tree</option>
+                </select>
+            </div>
+
+            <div class="inputwrap">
+                <label>Growing Tree Weighting</label>
+                <div class="sliderrow">
+                    <span>Newest</span>
+                    <input type="range" min="0" max="100" value="75">
+                    <span>Random</span>
+                </div>
+            </div>
+
+            <div class="buttonrow">
+                <button class="primary">Generate</button>
+                <button>Export</button>
+            </div>
+        </div>
     </div>
 </div>
     <script src="main.0.3.js" defer></script>
