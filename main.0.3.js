@@ -3,16 +3,23 @@ const dogButton = document.querySelector("#dogButton");
 const musicButton = document.querySelector("#musicButton");
 const mazeButton = document.querySelector("#mazeButton")
 
+const heightInput = document.querySelector("#Height")
+const widthInput = document.querySelector("#Width");
+
+const mazeAPI = "evaporatoronline.org/generate"
+
+const Dog1Path = "resources/BigDog.png";
+const Dog2Path = "resources/LilGuy.png";
+const Dog1Name = "Loki:";
+const Dog2Name = "Rocket:";
+
 let scheme = {
     dogs: "#b23a3a",
     music: "#5fb3a2",
     maze: "#f2d65c"
 }
 
-const Dog1Path = "resources/BigDog.png";
-const Dog2Path = "resources/LilGuy.png";
-const Dog1Name = "Loki:";
-const Dog2Name = "Rocket:";
+
 
 openPage("dogs", "dogButton");
 
@@ -51,6 +58,34 @@ mazeButton.addEventListener("click", () => {
     openPage("maze", "mazeButton");
 });
 
+heightInput.addEventListener("blur", () => {
+    dimensionFormat(heightInput);
+});
+
+heightInput.addEventListener("input", () => {
+    dimensionFormat(heightInput)
+})
+
+widthInput.addEventListener("blur", () => {
+    dimensionFormat(widthInput);
+});
+
+widthInput.addEventListener("input", () => {
+    dimensionFormat(widthInput)
+})
+
+
+function dimensionFormat(workingElement){
+    if (workingElement.value.length > 4) {
+        workingElement.value = workingElement.value.slice(0, 4);
+    }
+    if (workingElement.value < 5) {
+        workingElement.value = 5;
+    } else if (workingElement.value > 1000) {
+        workingElement.value = 1000
+    }
+}
+
 function openPage(pageId, buttonId) {
     const content = document.getElementsByClassName("tab");
     for (const element of content) {
@@ -67,4 +102,8 @@ function openPage(pageId, buttonId) {
 
     document.getElementById(pageId).style.backgroundColor = scheme[pageId];
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
+}
+
+function mazeCall(){
+
 }

@@ -16,8 +16,8 @@
 </div>
 <div class="tab active" id="dogs">
     <h1>The dogs:</h1>
-    <div class="mazewrap">
-        <div class="mazeimage">
+    <div class="tabwrap">
+        <div class="imagewrap">
             <h2 id="DogName">Loki:</h2>
             <img id="DogImage" src="resources/BigDog.png" alt="BigDog">
         </div>
@@ -45,8 +45,8 @@
 <div class="tab" id="maze">
     <h1>Maze Generator</h1>
 
-    <div class="mazewrap">
-        <div class="mazeimage">
+    <div class="tabwrap">
+        <div class="imagewrap">
             <img class="mazedisplay" src="resources/CurrentMaze.png" alt="Maze Preview">
         </div>
         <div class="mazeinputs">
@@ -57,24 +57,24 @@
 
             <div class="inputwrap">
                 <label>Height</label>
-                <input type="number" value="20">
+                <input class="dimensions" id="Height" type="number" value="20" min="5" max="1000">
             </div>
 
             <div class="inputwrap">
                 <label>Width</label>
-                <input type="number" value="20">
+                <input class="dimensions" id="Width" type="number" value="20" min="5" max="1000">
             </div>
 
             <div class="inputwrap">
                 <label>Algorithm</label>
-                <select>
+                <select id="MazeAlgorithm">
                     <option>Eller's</option>
                     <option>Growing Tree</option>
                 </select>
             </div>
 
             <div class="inputwrap">
-                <label>Growing Tree Weighting</label>
+                <label id="Weight">Growing Tree Weighting</label>
                 <div class="sliderrow">
                     <span>Newest</span>
                     <input type="range" min="0" max="100" value="75">
