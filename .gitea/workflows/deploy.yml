@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Clear temporary directory
         run: |
-          rm -rf /workdir/tmp_website || echo "/workdir/tmp_website does not exist, skipping"
+          rm -rf /workdir/* || echo "/workdir/tmp_website does not exist, skipping"
 
       - name: Clone repository
         run: git clone --depth 1 http://gitea:3000/Jevadmin/WebPageLearning.git /workdir/tmp_website
