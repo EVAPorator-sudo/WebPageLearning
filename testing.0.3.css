@@ -112,11 +112,6 @@ h2{
     background-color: #f2d65c;
 }
 
-@keyframes fadeIn{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
 .mazewrap {
     display: flex;
     height: calc(100% - 60px);
