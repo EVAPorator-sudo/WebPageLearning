@@ -2,9 +2,14 @@ const dogSwapButton = document.querySelector("#dogSwapButton");
 const dogButton = document.querySelector("#dogButton");
 const musicButton = document.querySelector("#musicButton");
 const mazeButton = document.querySelector("#mazeButton")
+const generateButton = document.querySelector("#generateButton")
 
 const heightInput = document.querySelector("#Height")
-const widthInput = document.querySelector("#Width");
+const lengthInput = document.querySelector("#Length");
+const weightInput = document.querySelector("#Weight")
+const algorithmInput = document.querySelector("#MazeAlgorithm")
+
+const mazeImage = document.querySelector("#mazeImage")
 
 const mazeAPI = "evaporatoronline.org/generate"
 
@@ -59,26 +64,33 @@ mazeButton.addEventListener("click", () => {
 });
 
 heightInput.addEventListener("blur", () => {
-    dimensionFormat(heightInput);
+    dimensionValueFormat(heightInput);
 });
 
 heightInput.addEventListener("input", () => {
-    dimensionFormat(heightInput)
+    dimensionLengthFormat(heightInput)
 })
 
-widthInput.addEventListener("blur", () => {
-    dimensionFormat(widthInput);
+lengthInput.addEventListener("blur", () => {
+    dimensionValueFormat(lengthInput);
 });
 
-widthInput.addEventListener("input", () => {
-    dimensionFormat(widthInput)
+lengthInput.addEventListener("input", () => {
+    dimensionLengthFormat(lengthInput)
 })
 
+generateButton.addEventListener("click", () => {
+    mazeCall();
+})
 
-function dimensionFormat(workingElement){
-    if (workingElement.value.length > 4) {
+function dimensionLengthFormat(workingElement){
+    if (workingElement.value.length > 4){
         workingElement.value = workingElement.value.slice(0, 4);
+        dimensionValueFormat(workingElement);
     }
+}
+
+function dimensionValueFormat(workingElement){
     if (workingElement.value < 5) {
         workingElement.value = 5;
     } else if (workingElement.value > 1000) {
@@ -104,6 +116,11 @@ function openPage(pageId, buttonId) {
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
 }
 
-function mazeCall(){
+async function mazeCall(){
+    var Height = heightInput.value;
+    var Length = lengthInput.value;
+    var Weight = weightInput.value;
+    var Algorithm = algorithmInput.value;
 
+    mazeImage.src = `https://${mazeAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}`;
 }

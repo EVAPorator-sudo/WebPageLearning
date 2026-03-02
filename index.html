@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Learning HTML and CSS</title>
-    <link rel="stylesheet" href="testing.0.3.css">
+    <link rel="stylesheet" href="testing.0.4.css">
     <link rel="icon" type="image/x-icon" href="resources/TinyGuy.png">
 </head>
 
@@ -47,7 +47,7 @@
 
     <div class="tabwrap">
         <div class="imagewrap">
-            <img class="mazedisplay" src="resources/CurrentMaze.png" alt="Maze Preview">
+            <img id="mazeImage" class="mazedisplay" src="resources/CurrentMaze.png" alt="Maze Preview">
         </div>
         <div class="mazeinputs">
             <p class="mazeexplanation">
@@ -62,34 +62,34 @@
 
             <div class="inputwrap">
                 <label>Width</label>
-                <input class="dimensions" id="Width" type="number" value="20" min="5" max="1000">
+                <input class="dimensions" id="Length" type="number" value="20" min="5" max="1000">
             </div>
 
             <div class="inputwrap">
                 <label>Algorithm</label>
                 <select id="MazeAlgorithm">
-                    <option>Eller's</option>
-                    <option>Growing Tree</option>
+                    <option value="Eller's">Eller's</option>
+                    <option value="GrowingTree">Growing Tree</option>
                 </select>
             </div>
 
             <div class="inputwrap">
-                <label id="Weight">Growing Tree Weighting</label>
+                <label>Growing Tree Weighting</label>
                 <div class="sliderrow">
                     <span>Newest</span>
-                    <input type="range" min="0" max="100" value="75">
+                    <input id = "Weight" type="range" min="0" max="100" value="75">
                     <span>Random</span>
                 </div>
             </div>
 
             <div class="buttonrow">
-                <button class="primary">Generate</button>
+                <button class="primary" id="generateButton">Generate</button>
                 <button>Export</button>
             </div>
         </div>
     </div>
 </div>
-    <script src="main.0.3.js" defer></script>
+    <script src="main.0.4.js" defer></script>
 </body>
 
 </html>
