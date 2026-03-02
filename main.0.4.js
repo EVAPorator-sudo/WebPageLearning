@@ -121,6 +121,7 @@ async function mazeCall(){
     var Length = lengthInput.value;
     var Weight = weightInput.value;
     var Algorithm = algorithmInput.value;
-
-    mazeImage.src = `https://${mazeAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}`;
+    var cacheFiller = Date.now();
+    mazeImage.src = "resources / CurrentMaze.png"
+    mazeImage.src = `https://${mazeAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}&_=${cacheFiller}`;
 }
