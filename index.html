@@ -13,6 +13,7 @@
     <button class="tabLink" id="dogButton">Dogs</button>
     <button class="tabLink" id="musicButton">Music</button>
     <button class="tabLink" id="mazeButton">Generate</button>
+    <button class="tabLink" id="solutionButton">Solve</button>
 </div>
 <div class="tab active" id="dogs">
     <h1>The dogs:</h1>
@@ -47,7 +48,7 @@
 
     <div class="tabwrap">
         <div class="imagewrap">
-            <img id="mazeImage" class="mazedisplay" src="resources/CurrentMaze.png" alt="Maze Preview">
+            <img id="mazeImage" class="mazedisplay" alt="Maze Preview">
         </div>
         <div class="mazeinputs">
             <p class="mazeexplanation">
@@ -84,6 +85,35 @@
 
             <div class="buttonrow">
                 <button class="primary" id="generateButton">Generate</button>
+                <button>Export</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab" id="solve">
+    <h1>Maze Solver</h1>
+
+    <div class="tabwrap">
+        <div class="imagewrap">
+            <img id="solutionImage" class="mazedisplay" alt="Maze Preview">
+        </div>
+        <div class="mazeinputs">
+            <p class="mazeexplanation">
+                Specify your requirements and click <b>Solve</b>.
+                When finished, click <b>Export</b>.
+            </p>
+            <div class="inputwrap">
+                <label>Algorithm</label>
+                <select id="SolveAlgorithm">
+                    <option value="Dijkstra's">Dijkstra's</option>
+                    <option value="A*">A*</option>
+                </select>
+            </div>
+            <div class="buttonrow">
+                <button>Import</button>
+            </div>
+            <div class="buttonrow">
+                <button class="primary" id="solveButton">Solve</button>
                 <button>Export</button>
             </div>
         </div>

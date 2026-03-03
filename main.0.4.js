@@ -3,15 +3,18 @@ const dogButton = document.querySelector("#dogButton");
 const musicButton = document.querySelector("#musicButton");
 const mazeButton = document.querySelector("#mazeButton")
 const generateButton = document.querySelector("#generateButton")
+const solutionButton = document.querySelector("#solutionButton")
+const solveButton = document.querySelector("#sovleButton");
 
 const heightInput = document.querySelector("#Height")
 const lengthInput = document.querySelector("#Length");
 const weightInput = document.querySelector("#Weight")
-const algorithmInput = document.querySelector("#MazeAlgorithm")
+const genAlgorithmInput = document.querySelector("#MazeAlgorithm")
 
 const mazeImage = document.querySelector("#mazeImage")
 
-const mazeAPI = "evaporatoronline.org/generate"
+const genAPI = "evaporatoronline.org/generate"
+const solveAPI = "evaporatoronline.org/solve"
 
 const Dog1Path = "resources/BigDog.png";
 const Dog2Path = "resources/LilGuy.png";
@@ -21,12 +24,14 @@ const Dog2Name = "Rocket:";
 let scheme = {
     dogs: "#b23a3a",
     music: "#5fb3a2",
-    maze: "#f2d65c"
+    maze: "#f2d65c",
+    solve: "#3434eb"
 }
 
 
 
 openPage("dogs", "dogButton");
+genCall();
 
 function alertTest(popup) {
     alert(popup);
@@ -63,6 +68,10 @@ mazeButton.addEventListener("click", () => {
     openPage("maze", "mazeButton");
 });
 
+solutionButton.addEventListener("click", () => {
+    openPage("solve", "solutionButton");
+});
+
 heightInput.addEventListener("blur", () => {
     dimensionValueFormat(heightInput);
 });
@@ -80,7 +89,7 @@ lengthInput.addEventListener("input", () => {
 })
 
 generateButton.addEventListener("click", () => {
-    mazeCall();
+    genCall();
 })
 
 function dimensionLengthFormat(workingElement){
@@ -116,12 +125,18 @@ function openPage(pageId, buttonId) {
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
 }
 
-async function mazeCall(){
+async function genCall(){
     var Height = heightInput.value;
     var Length = lengthInput.value;
     var Weight = weightInput.value;
-    var Algorithm = algorithmInput.value;
+    var Algorithm = genAlgorithmInput.value;
     var cacheFiller = Date.now();
-    mazeImage.src = "resources / CurrentMaze.png"
-    mazeImage.src = `https://${mazeAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}&_=${cacheFiller}`;
+    mazeImage.src = `https://${genAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}&_=${cacheFiller}`;
+}
+
+async function solveCall() {
+    var startX;
+    var startY;
+    var endX;
+    var endY;
 }
