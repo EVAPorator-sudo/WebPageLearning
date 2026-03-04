@@ -4,14 +4,20 @@ const musicButton = document.querySelector("#musicButton");
 const mazeButton = document.querySelector("#mazeButton")
 const generateButton = document.querySelector("#generateButton")
 const solutionButton = document.querySelector("#solutionButton")
-const solveButton = document.querySelector("#sovleButton");
+const solveButton = document.querySelector("#solveButton");
 
 const heightInput = document.querySelector("#Height")
 const lengthInput = document.querySelector("#Length");
 const weightInput = document.querySelector("#Weight")
 const genAlgorithmInput = document.querySelector("#MazeAlgorithm")
+const startX = document.querySelector("#StartX")
+const startY = document.querySelector("#StartY")
+const endX = document.querySelector("#EndX")
+const endY = document.querySelector("#EndY")
+const solveAlgorithmInput = document.querySelector("#SolveAlgorithm")
 
 const mazeImage = document.querySelector("#mazeImage")
+const solveImage = document.querySelector("#solveDisplay")
 
 const genAPI = "evaporatoronline.org/generate"
 const solveAPI = "evaporatoronline.org/solve"
@@ -20,6 +26,8 @@ const Dog1Path = "resources/BigDog.png";
 const Dog2Path = "resources/LilGuy.png";
 const Dog1Name = "Loki:";
 const Dog2Name = "Rocket:";
+
+let mazeBlob = null;
 
 let scheme = {
     dogs: "#b23a3a",
@@ -86,11 +94,15 @@ lengthInput.addEventListener("blur", () => {
 
 lengthInput.addEventListener("input", () => {
     dimensionLengthFormat(lengthInput)
-})
+});
 
 generateButton.addEventListener("click", () => {
     genCall();
-})
+});
+
+solveButton.addEventListener("click", () => {
+    solveCall();
+});
 
 function dimensionLengthFormat(workingElement){
     if (workingElement.value.length > 4){
@@ -131,12 +143,42 @@ async function genCall(){
     var Weight = weightInput.value;
     var Algorithm = genAlgorithmInput.value;
     var cacheFiller = Date.now();
-    mazeImage.src = `https://${genAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}&_=${cacheFiller}`;
+
+    const response = await(fetch(`https://${genAPI}?Length=${Length}&Height=${Height}&Weight=${Weight}&Algorithm=${Algorithm}&_=${cacheFiller}`));
+    const blob = await response.blob();
+    mazeBlob = blob;
+
+    if (mazeImage.src) {
+        URL.revokeObjectURL(mazeImage.src);
+    }
+    mazeImage.src = URL.createObjectURL(blob);
+
 }
 
 async function solveCall() {
-    var startX;
-    var startY;
-    var endX;
-    var endY;
+
+    if (!mazeBlob) {
+        alert("Generate a maze first.");
+        return;
+    }
+
+    var startXCoord = startX.value;
+    var startYCoord = startY.value
+    var endXCoord = endX.value;
+    var endYCoord = endY.value;
+    var Algorithm = solveAlgorithmInput.value;
+
+    const form = new FormData();
+    form.append("image", mazeBlob, "maze.png");
+    form.append("Start", `${startXCoord}-${startYCoord}`);
+    form.append("End", `${endXCoord}-${endYCoord}`);
+    form.append("Algorithm", Algorithm);
+
+    const response = await fetch(`https://${solveAPI}`, {method : "POST", body : form});
+    const blob = await response.blob();
+
+    if (solveImage.src) {
+        URL.revokeObjectURL(solveImage.src);
+    }
+    solveImage.src = URL.createObjectURL(blob);
 }
