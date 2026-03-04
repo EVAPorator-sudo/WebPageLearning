@@ -37,9 +37,10 @@ let scheme = {
 }
 
 
-
-openPage("dogs", "dogButton");
-genCall();
+document.addEventListener("DOMContentLoaded", () => {
+    openPage("dogs", "dogButton");
+    genCall();
+});
 
 function alertTest(popup) {
     alert(popup);
