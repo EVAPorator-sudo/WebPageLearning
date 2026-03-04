@@ -17,7 +17,7 @@ const endY = document.querySelector("#EndY")
 const solveAlgorithmInput = document.querySelector("#SolveAlgorithm")
 
 const mazeImage = document.querySelector("#mazeImage")
-const solveImage = document.querySelector("#solveDisplay")
+const solveImage = document.querySelector("#solveImage")
 
 const genAPI = "evaporatoronline.org/generate"
 const solveAPI = "evaporatoronline.org/solve"
