@@ -168,3 +168,20 @@ body {
     background: #ddd;
     border: none;
 }
+
+.inputRow{
+    flex-direction: row;
+    display: inline-flex;
+    justify-content: left;
+}
+
+.inputRow .inputwrap{
+    width: 20%;
+    gap: 1em;
+}
+
+.inputRow .label{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
