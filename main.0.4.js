@@ -181,7 +181,7 @@ async function solveCall() {
     const response = await fetch(`https://${solveAPI}`, {method : "POST", body : form});
     const blob = await response.blob();
 
-    if (solveImage.src) {
+    if (solveImage.src != null) {
         URL.revokeObjectURL(solveImage.src);
     }
     solveImage.src = URL.createObjectURL(blob);
