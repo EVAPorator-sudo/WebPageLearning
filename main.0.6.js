@@ -161,6 +161,9 @@ function openPage(pageId, buttonId) {
 
     document.getElementById(pageId).style.backgroundColor = scheme[pageId];
     document.getElementById(buttonId).style.backgroundColor = scheme[pageId];
+    if (pageId == "solve"){
+        solveImage.src = mazeImage.src;
+    }
 }
 
 async function genCall(){
