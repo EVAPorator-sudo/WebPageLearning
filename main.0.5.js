@@ -28,7 +28,6 @@ const Dog1Name = "Loki:";
 const Dog2Name = "Rocket:";
 
 let mazeBlob = null;
-
 let scheme = {
     dogs: "#b23a3a",
     music: "#5fb3a2",
@@ -36,6 +35,8 @@ let scheme = {
     solve: "#3434eb"
 }
 
+let maxX;
+let maxY;
 
 document.addEventListener("DOMContentLoaded", () => {
     openPage("dogs", "dogButton");
@@ -97,6 +98,22 @@ lengthInput.addEventListener("input", () => {
     dimensionLengthFormat(lengthInput)
 });
 
+startX.addEventListener("input", () => {
+    coordinateValueFormat(startX, maxX)
+});
+
+endX.addEventListener("input", () => {
+    coordinateValueFormat(endX, maxX)
+});
+
+startY.addEventListener("input", () => {
+    coordinateValueFormat(startY, maxY)
+});
+
+endY.addEventListener("input", () => {
+    coordinateValueFormat(endY, maxY)
+});
+
 generateButton.addEventListener("click", () => {
     genCall();
 });
@@ -116,9 +133,17 @@ function dimensionValueFormat(workingElement){
     if (workingElement.value < 5) {
         workingElement.value = 5;
     } else if (workingElement.value > 1000) {
-        workingElement.value = 1000
+        workingElement.value = 1000;
     }
-}
+};
+
+function coordinateValueFormat(workingElement, limit){
+    if (workingElement.value < 0 ){
+        workingElement.value = 0;
+    } else if (workingElement.value > limit){
+        workingElement.value = limit;
+    }
+};
 
 function openPage(pageId, buttonId) {
     const content = document.getElementsByClassName("tab");
@@ -157,6 +182,9 @@ async function genCall(){
     if (!solveImage.src){
         solveImage.src = mazeImage.src
     }
+
+    maxX = Length -1;
+    maxY = Height -1;
 }
 
 async function solveCall() {
@@ -172,6 +200,20 @@ async function solveCall() {
     var endYCoord = endY.value;
     var Algorithm = solveAlgorithmInput.value;
 
+    if (startXCoord < 0 || startXCoord >maxX){
+        alert("Invalid Start X coordinate");
+        return
+    } else if (endXCoord < 0 || endXCoord > maxX){
+        alert("Invalid End X coordinate");
+        return;
+    } else if (startYCoord < 0 || startYCoord > maxY) {
+        alert("Invalid Start Y coordinate");
+        return;
+    } else if (endYCoord < 0 || endYCoord > maxY) {
+        alert("Invalid End Y coordinate");
+        return;
+    }
+
     const form = new FormData();
     form.append("image", mazeBlob, "maze.png");
     form.append("Start", `${startXCoord}-${startYCoord}`);
@@ -186,3 +228,10 @@ async function solveCall() {
     }
     solveImage.src = URL.createObjectURL(blob);
 }
+
+function pixelToCells(x, y){
+    const cellSize = 20;
+    const wallThickness = 1;
+    maxX = Math.floor((x - wallThickness) / cellSize);
+    maxY = Math.floor((y - wallThickness) / cellSize);
+};
