@@ -153,7 +153,7 @@ async function genCall(){
     }
     mazeImage.src = URL.createObjectURL(blob);
 
-    if (solveImage.src == null){
+    if (!solveImage.src){
         solveImage.src = mazeImage.src
     }
 }
