@@ -126,14 +126,16 @@ solveButton.addEventListener("click", () => {
 
 sExportButton.addEventListener("click", () => {
     var link = document.createElement("a");
-    link.download = `maze.${Date.now}`;
+    var end = Date.now();
+    link.download = `maze.${end}`;
     link.href = solveImage.src;
     link.click();
 });
 
 gExportButton.addEventListener("click", () => {
     var link = document.createElement("a");
-    link.download = `maze.${Date.now}`;
+    var end = Date.now();
+    link.download = `maze.${end}`;
     link.href = mazeImage.src;
     link.click();
 });
