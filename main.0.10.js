@@ -127,7 +127,7 @@ solveButton.addEventListener("click", () => {
 sExportButton.addEventListener("click", () => {
     var link = document.createElement("a");
     var end = Date.now();
-    link.download = `maze.${end}`;
+    link.download = `maze-${end}.png`;
     link.href = solveImage.src;
     link.click();
 });
