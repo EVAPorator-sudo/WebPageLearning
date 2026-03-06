@@ -5,6 +5,8 @@ const mazeButton = document.querySelector("#mazeButton")
 const generateButton = document.querySelector("#generateButton")
 const solutionButton = document.querySelector("#solutionButton")
 const solveButton = document.querySelector("#solveButton");
+const sExportButton = document.querySelector("#sExportButton");
+const gExportButton = document.querySelector("#gExportButton");
 
 const heightInput = document.querySelector("#Height")
 const lengthInput = document.querySelector("#Length");
@@ -120,6 +122,20 @@ generateButton.addEventListener("click", () => {
 
 solveButton.addEventListener("click", () => {
     solveCall();
+});
+
+sExportButton.addEventListener("click", () => {
+    var link = document.createElement("a");
+    link.download = "solution_maze";
+    link.href = solveImage.src;
+    link.click();
+});
+
+gExportButton.addEventListener("click", () => {
+    var link = document.createElement("a");
+    link.download = "solution_maze";
+    link.href = mazeImage.src;
+    link.click();
 });
 
 function dimensionLengthFormat(workingElement){
