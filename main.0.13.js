@@ -25,6 +25,7 @@ const genAPI = "evaporatoronline.org/generate"
 const solveAPI = "evaporatoronline.org/solve"
 
 const Dog1Path = "resources/BigDog.png";
+const spinnerPath = "resources/Spinner.svg";
 const Dog2Path = "resources/LilGuy.png";
 const Dog1Name = "Loki:";
 const Dog2Name = "Rocket:";
@@ -197,7 +198,8 @@ function openPage(pageId, buttonId) {
 }
 
 async function genCall(){
-    mazeImage.src = "resources/Spinner.gif"
+
+    mazeImage.src = spinnerPath
     var Height = heightInput.value;
     var Length = lengthInput.value;
     var Weight = weightInput.value;
@@ -223,7 +225,7 @@ async function genCall(){
 
 async function solveCall() {
 
-    solveImage.src = "resources/Spinner.gif"
+    solveImage.src = spinnerPath
 
     if (!mazeBlob) {
         alert("Generate a maze first.");
