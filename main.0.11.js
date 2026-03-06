@@ -125,19 +125,29 @@ solveButton.addEventListener("click", () => {
 });
 
 sExportButton.addEventListener("click", () => {
-    var link = document.createElement("a");
-    var end = Date.now();
-    link.download = `maze-${end}.png`;
-    link.href = solveImage.src;
-    link.click();
+    fetch(solveImage.src)
+        .then(res => res.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+        });
 });
 
 gExportButton.addEventListener("click", () => {
-    var link = document.createElement("a");
-    var end = Date.now();
-    link.download = `maze.${end}`;
-    link.href = mazeImage.src;
-    link.click();
+    fetch(mazeImage.src)
+        .then(res => res.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+        });
 });
 
 function dimensionLengthFormat(workingElement){
