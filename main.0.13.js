@@ -197,6 +197,7 @@ function openPage(pageId, buttonId) {
 }
 
 async function genCall(){
+    mazeImage.src = "resources/Spinner.gif"
     var Height = heightInput.value;
     var Length = lengthInput.value;
     var Weight = weightInput.value;
@@ -221,6 +222,8 @@ async function genCall(){
 }
 
 async function solveCall() {
+
+    solveImage.src = "resources/Spinner.gif"
 
     if (!mazeBlob) {
         alert("Generate a maze first.");
