@@ -132,7 +132,7 @@ sExportButton.addEventListener("click", () => {
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = `maze-${date}`;
+            link.download = `solved-${date}`;
             link.click();
             URL.revokeObjectURL(url);
         });
@@ -146,7 +146,7 @@ gExportButton.addEventListener("click", () => {
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = `solved-${date}`;
+            link.download = `maze-${date}`;
             link.click();
             URL.revokeObjectURL(url);
         });
