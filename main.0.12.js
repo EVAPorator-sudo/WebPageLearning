@@ -125,26 +125,28 @@ solveButton.addEventListener("click", () => {
 });
 
 sExportButton.addEventListener("click", () => {
+    var date = Date.now()
     fetch(solveImage.src)
         .then(res => res.blob())
         .then(blob => {
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = filename;
+            link.download = `maze-${date}`;
             link.click();
             URL.revokeObjectURL(url);
         });
 });
 
 gExportButton.addEventListener("click", () => {
+    var date = Date.now()
     fetch(mazeImage.src)
         .then(res => res.blob())
         .then(blob => {
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = filename;
+            link.download = `solved-${date}`;
             link.click();
             URL.revokeObjectURL(url);
         });
